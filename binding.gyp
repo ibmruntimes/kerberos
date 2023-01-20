@@ -44,8 +44,6 @@
           }
         }],
         ['OS=="zos"', {
-          'cflags': [ '-qASCII' ],
-          'cflags_cc': [ '-qASCII' ],
           'include_dirs': [
             '$(KRB5_HOME)/include/',
             '$(KRB5_HOME)/include/gssapi/'

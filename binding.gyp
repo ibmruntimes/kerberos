@@ -1,4 +1,7 @@
 {
+  'variables': {
+        'NODE_VERSION%':'<!(node -p \"process.versions.node.split(\\\".\\\")[0]\")'
+  },
   'targets': [
     {
       'target_name': 'kerberos',
@@ -57,6 +60,10 @@
             '$(KRB5_HOME)/lib/libkrb5support.a'
           ],
           "libraries!": ["-lkrb5", "-lgssapi_krb5"]
+        }],
+        ['NODE_VERSION < 18', {
+            'cflags': [  '-qascii' ],
+            'cflags_cc': [ '-qascii' ]
         }]
       ]
     }

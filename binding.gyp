@@ -59,7 +59,7 @@
             '$(KRB5_HOME)/lib/libcom_err.a',
             '$(KRB5_HOME)/lib/libkrb5support.a'
           ],
-          "libraries!": ["-lkrb5", "-lgssapi_krb5"]
+          'libraries!': ['-lkrb5', '-lgssapi_krb5']
         }],
         ['NODE_VERSION < 18', {
             'cflags': [  '-qascii' ],

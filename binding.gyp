@@ -1,4 +1,7 @@
 {
+  'variables': {
+        'NODE_VERSION%':'<!(node -p \"process.versions.node.split(\\\".\\\")[0]\")'
+  },
   'targets': [
     {
       'target_name': 'kerberos',
@@ -44,8 +47,6 @@
           }
         }],
         ['OS=="zos"', {
-          'cflags': [ '-qASCII' ],
-          'cflags_cc': [ '-qASCII' ],
           'include_dirs': [
             '$(KRB5_HOME)/include/',
             '$(KRB5_HOME)/include/gssapi/'
@@ -58,7 +59,11 @@
             '$(KRB5_HOME)/lib/libcom_err.a',
             '$(KRB5_HOME)/lib/libkrb5support.a'
           ],
-          "libraries!": ["-lkrb5", "-lgssapi_krb5"]
+          'libraries!': ['-lkrb5', '-lgssapi_krb5']
+        }],
+        ['NODE_VERSION < 18', {
+            'cflags': [  '-qascii' ],
+            'cflags_cc': [ '-qascii' ]
         }]
       ]
     }
